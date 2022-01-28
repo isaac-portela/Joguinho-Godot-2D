@@ -1,4 +1,4 @@
-[gd_scene load_steps=58 format=2]
+[gd_scene load_steps=62 format=2]
 
 [ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Assets/Terrain/1 - Grassland/Background parts/1 - Foreground_scenery.png" type="Texture" id=2]
@@ -14,6 +14,10 @@
 [ext_resource path="res://Scenes/Mushroom.tscn" type="PackedScene" id=12]
 [ext_resource path="res://Prefabs/FallingPlatform.tscn" type="PackedScene" id=13]
 [ext_resource path="res://Prefabs/MovingPlatform.tscn" type="PackedScene" id=14]
+[ext_resource path="res://Scripts/Reset_Level.gd" type="Script" id=15]
+[ext_resource path="res://Prefabs/HUD.tscn" type="PackedScene" id=16]
+[ext_resource path="res://Prefabs/checkpoint.tscn" type="PackedScene" id=17]
+[ext_resource path="res://Prefabs/Goal.tscn" type="PackedScene" id=18]
 
 [sub_resource type="ConvexPolygonShape2D" id=5]
 points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
@@ -1078,6 +1082,7 @@ shader_param/Speed = 0.02
 extents = Vector2( 325.5, 22 )
 
 [node name="Level_01" type="Node2D"]
+script = ExtResource( 15 )
 
 [node name="TileMap" type="TileMap" parent="."]
 position = Vector2( 10, 0 )
@@ -1087,69 +1092,6 @@ collision_layer = 8
 collision_mask = 0
 format = 1
 tile_data = PoolIntArray( -1441691, 29, 0, -1441690, 29, 0, -1441689, 40, 0, -1441688, 41, 0, -1441687, 29, 0, -1441686, 29, 0, -1376155, 29, 0, -1376154, 29, 0, -1376151, 29, 0, -1376150, 29, 0, -1310621, 14, 0, -1310620, 14, 0, -1310619, 14, 0, -1310618, 14, 0, -1310617, 14, 0, -1310616, 14, 0, -1310615, 14, 0, -1310614, 14, 0, -1310613, 14, 0, -1310612, 14, 0, -1048477, 36, 0, -1048468, 36, 0, -982941, 0, 0, -982940, 0, 0, -982939, 1, 0, -982938, 1, 0, -982937, 1, 0, -982936, 1, 0, -982935, 1, 0, -982934, 1, 0, -982933, 1, 0, -982932, 2, 0, -917409, 42, 0, -917408, 42, 0, -917407, 42, 0, -917405, 21, 0, -917404, 4, 0, -917403, 4, 0, -917402, 4, 0, -917401, 4, 0, -917400, 4, 0, -917399, 4, 0, -917398, 4, 0, -917397, 4, 0, -917396, 21, 0, -851869, 15, 0, -851868, 4, 0, -851867, 4, 0, -851866, 4, 0, -851865, 4, 0, -851864, 4, 0, -851863, 4, 0, -851862, 4, 0, -851861, 4, 0, -851860, 21, 0, -786344, 14, 0, -786333, 15, 0, -786332, 4, 0, -786331, 4, 0, -786330, 4, 0, -786329, 4, 0, -786328, 4, 0, -786327, 4, 0, -786326, 4, 0, -786325, 4, 0, -786324, 21, 0, -720812, 14, 0, -720811, 43, 0, -720810, 38, 0, -720809, 38, 0, -720808, 43, 0, -720797, 15, 0, -720796, 4, 0, -720795, 4, 0, -720794, 4, 0, -720793, 4, 0, -720792, 4, 0, -720791, 4, 0, -720790, 4, 0, -720789, 4, 0, -720788, 21, 0, -655261, 15, 0, -655260, 14, 0, -655259, 14, 0, -655258, 14, 0, -655257, 14, 0, -655256, 14, 0, -655255, 14, 0, -655254, 14, 0, -655253, 14, 0, -655252, 21, 0, -589752, 37, 0, -589751, 38, 0, -589750, 39, 0, -589725, 21, 0, -589724, 21, 0, -589723, 21, 0, -589722, 21, 0, -589721, 21, 0, -589720, 21, 0, -589719, 21, 0, -589718, 21, 0, -589717, 21, 0, -589716, 21, 0, -327632, 26, 0, -327631, 29, 0, -327630, 29, 0, -327629, 28, 0, -262096, 15, 0, -262095, 15, 0, -262094, 15, 0, -262093, 15, 0, -196560, 14, 0, -196559, 14, 0, -196558, 14, 0, -196557, 14, 0, -65537, 18, 0, -131024, 16, 0, -131023, 16, 0, -131022, 16, 0, -131021, 16, 0, -1, 18, 0, 65535, 18, 0, 131071, 18, 0, 196607, 18, 0, 262143, 18, 0, 327679, 18, 0, 262159, 0, 0, 262160, 1, 0, 262161, 1, 0, 393215, 18, 0, 327695, 3, 0, 327696, 4, 0, 327697, 5, 0, 458751, 18, 0, 393228, 40, 0, 393229, 40, 0, 393230, 40, 0, 393231, 3, 0, 393232, 4, 0, 393233, 5, 0, 524287, 18, 0, 458767, 3, 0, 458768, 4, 0, 458769, 5, 0, 458776, 0, 0, 458777, 1, 0, 458778, 2, 0, 458788, 14, 0, 458789, 14, 0, 458790, 14, 0, 458791, 14, 0, 458792, 14, 0, 589823, 18, 0, 524288, 0, 0, 524289, 1, 0, 524290, 1, 0, 524291, 1, 0, 524292, 1, 0, 524293, 1, 0, 524294, 2, 0, 524303, 3, 0, 524304, 4, 0, 524305, 5, 0, 524312, 4, 0, 524313, 4, 0, 524314, 4, 0, 524323, 14, 0, 524324, 14, 0, 524325, 14, 0, 524326, 14, 0, 524327, 14, 0, 524328, 14, 0, 655359, 18, 0, 589824, 3, 0, 589825, 4, 0, 589826, 4, 0, 589827, 4, 0, 589828, 4, 0, 589829, 4, 0, 589830, 5, 0, 589838, 29, 0, 589839, 3, 0, 589840, 4, 0, 589841, 5, 0, 589848, 4, 0, 589849, 4, 0, 589850, 4, 0, 589851, 29, 0, 589858, 14, 0, 589859, 14, 0, 589860, 14, 0, 589861, 14, 0, 589862, 0, 0, 589863, 1, 0, 589864, 2, 0, 589886, 27, 0, 589896, 27, 0, 720895, 18, 0, 655360, 11, 0, 655361, 12, 0, 655362, 11, 0, 655363, 12, 0, 655364, 11, 0, 655365, 12, 0, 655366, 11, 0, 655367, 0, 0, 655368, 1, 0, 655369, 1, 0, 655370, 1, 0, 655371, 1, 0, 655372, 1, 0, 655373, 1, 0, 655374, 1, 0, 655375, 1, 0, 655376, 1, 0, 655377, 2, 0, 655378, 1, 0, 655379, 1, 0, 655380, 1, 0, 655381, 1, 0, 655382, 1, 0, 655383, 1, 0, 655384, 4, 0, 655385, 4, 0, 655386, 4, 0, 655387, 29, 0, 655388, 29, 0, 655392, 14, 0, 655393, 14, 0, 655394, 14, 0, 655395, 14, 0, 655396, 14, 0, 655397, 14, 0, 655398, 4, 0, 655399, 4, 0, 655400, 4, 0, 655401, 1, 0, 655402, 1, 0, 655403, 1, 0, 655404, 1, 0, 655405, 1, 0, 655406, 1, 0, 655422, 1, 0, 655423, 1, 0, 655424, 1, 0, 655425, 36, 0, 655426, 36, 0, 655427, 29, 0, 655428, 29, 0, 655429, 29, 0, 655430, 29, 0, 655431, 29, 0, 655432, 29, 0, 786431, 18, 0, 720896, 36, 0, 720897, 4, 0, 720898, 4, 0, 720899, 4, 0, 720900, 4, 0, 720901, 4, 0, 720902, 5, 0, 720903, 4, 0, 720904, 4, 0, 720905, 4, 0, 720906, 4, 0, 720907, 4, 0, 720908, 4, 0, 720909, 4, 0, 720910, 4, 0, 720911, 4, 0, 720912, 4, 0, 720913, 4, 0, 720914, 4, 0, 720915, 4, 0, 720916, 4, 0, 720917, 4, 0, 720918, 4, 0, 720919, 4, 0, 720920, 1, 0, 720921, 1, 0, 720922, 1, 0, 720923, 1, 0, 720924, 1, 0, 720925, 1, 0, 720926, 1, 0, 720927, 1, 0, 720928, 14, 0, 720929, 14, 0, 720930, 14, 0, 720931, 14, 0, 720932, 14, 0, 720933, 14, 0, 720934, 4, 0, 720935, 4, 0, 720936, 4, 0, 720937, 4, 0, 720938, 4, 0, 720939, 4, 0, 720940, 4, 0, 720941, 4, 0, 720942, 3, 0, 720958, 4, 0, 720959, 4, 0, 720960, 4, 0, 720961, 36, 0, 720962, 36, 0, 720963, 29, 0, 720964, 29, 0, 720965, 29, 0, 720966, 29, 0, 720967, 29, 0, 720968, 29, 0, 851967, 18, 0, 786432, 36, 0, 786433, 36, 0, 786434, 4, 0, 786435, 4, 0, 786436, 4, 0, 786437, 4, 0, 786438, 5, 0, 786439, 4, 0, 786440, 4, 0, 786441, 4, 0, 786442, 4, 0, 786443, 4, 0, 786444, 4, 0, 786445, 4, 0, 786446, 4, 0, 786447, 4, 0, 786448, 4, 0, 786449, 4, 0, 786450, 4, 0, 786451, 4, 0, 786452, 4, 0, 786453, 4, 0, 786454, 4, 0, 786455, 4, 0, 786456, 4, 0, 786457, 4, 0, 786458, 4, 0, 786459, 4, 0, 786460, 4, 0, 786461, 4, 0, 786462, 4, 0, 786463, 4, 0, 786464, 1, 0, 786465, 1, 0, 786466, 1, 0, 786467, 1, 0, 786468, 1, 0, 786469, 1, 0, 786470, 1, 0, 786471, 1, 0, 786472, 1, 0, 786473, 4, 0, 786474, 4, 0, 786475, 4, 0, 786476, 4, 0, 786477, 4, 0, 786478, 7, 0, 786494, 4, 0, 786495, 4, 0, 786496, 4, 0, 786497, 36, 0, 786498, 36, 0, 786499, 29, 0, 786500, 29, 0, 786501, 29, 0, 786502, 29, 0, 786503, 29, 0, 786504, 29, 0, 917503, 13, 0, 851968, 13, 0, 851969, 14, 0, 851970, 15, 0, 851971, 15, 0, 851972, 15, 0, 851973, 15, 0, 851974, 15, 0, 851975, 15, 0, 851976, 15, 0, 851977, 15, 0, 851978, 15, 0, 851979, 15, 0, 851980, 15, 0, 851981, 15, 0, 851982, 15, 0, 851983, 15, 0, 851984, 15, 0, 851985, 15, 0, 851986, 15, 0, 851987, 15, 0, 851988, 15, 0, 851989, 15, 0, 851990, 15, 0, 851991, 15, 0, 851992, 15, 0, 851993, 15, 0, 851994, 15, 0, 851995, 15, 0, 851996, 15, 0, 851997, 15, 0, 851998, 15, 0, 851999, 15, 0, 852000, 15, 0, 852001, 15, 0, 852002, 15, 0, 852003, 15, 0, 852004, 17, 0, 852005, 17, 0, 852006, 15, 0, 852007, 15, 0, 852008, 15, 0, 852009, 13, 0, 852010, 13, 0, 852011, 13, 0, 852012, 13, 0, 852013, 13, 0, 852014, 9, 0, 852030, 13, 0, 852031, 13, 0, 852032, 13, 0, 852033, 36, 0, 852034, 36, 0, 852035, 29, 0, 852036, 29, 0, 852037, 29, 0, 852038, 29, 0, 852039, 29, 0, 852040, 29, 0, 983039, 13, 0, 917504, 13, 0, 917505, 14, 0, 1048603, 41, 0, 1048604, 41, 0, 1048605, 41, 0 )
-
-[node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 16, 112 )
-
-[node name="Mushroom" parent="." instance=ExtResource( 12 )]
-position = Vector2( 285, 64 )
-
-[node name="Mushroom3" parent="." instance=ExtResource( 12 )]
-position = Vector2( 1099, 159 )
-
-[node name="Mushroom2" parent="." instance=ExtResource( 12 )]
-position = Vector2( 1685, -241 )
-
-[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
-
-[node name="sky" type="ParallaxLayer" parent="ParallaxBackground"]
-motion_mirroring = Vector2( 576, 0 )
-
-[node name="Sprite" type="Sprite" parent="ParallaxBackground/sky"]
-position = Vector2( 0, -170 )
-scale = Vector2( 2, 2 )
-texture = ExtResource( 4 )
-centered = false
-
-[node name="clouds" type="ParallaxLayer" parent="ParallaxBackground"]
-motion_mirroring = Vector2( 576, 0 )
-
-[node name="Sprite" type="Sprite" parent="ParallaxBackground/clouds"]
-material = SubResource( 45 )
-position = Vector2( 0, -170 )
-scale = Vector2( 2, 2 )
-texture = ExtResource( 6 )
-centered = false
-
-[node name="cloud-mountain" type="ParallaxLayer" parent="ParallaxBackground"]
-motion_scale = Vector2( 0.6, 0.8 )
-motion_mirroring = Vector2( 576, 0 )
-
-[node name="Sprite" type="Sprite" parent="ParallaxBackground/cloud-mountain"]
-position = Vector2( 0, -170 )
-scale = Vector2( 2, 2 )
-texture = ExtResource( 5 )
-centered = false
-
-[node name="mountain-trees" type="ParallaxLayer" parent="ParallaxBackground"]
-motion_scale = Vector2( 0.7, 1 )
-motion_mirroring = Vector2( 576, 0 )
-
-[node name="Sprite" type="Sprite" parent="ParallaxBackground/mountain-trees"]
-position = Vector2( 0, -170 )
-scale = Vector2( 2, 2 )
-texture = ExtResource( 7 )
-centered = false
-
-[node name="fg-trees" type="ParallaxLayer" parent="ParallaxBackground"]
-motion_scale = Vector2( 0.8, 1 )
-motion_mirroring = Vector2( 576, 0 )
-
-[node name="Sprite" type="Sprite" parent="ParallaxBackground/fg-trees"]
-position = Vector2( 0, -170 )
-scale = Vector2( 2, 2 )
-texture = ExtResource( 2 )
-centered = false
 
 [node name="fruits" type="Node2D" parent="."]
 
@@ -1267,23 +1209,20 @@ position = Vector2( 1280, -184 )
 [node name="kiwi9" parent="fruits" instance=ExtResource( 11 )]
 position = Vector2( 1729, -252 )
 
-[node name="fall-zone" type="Area2D" parent="."]
-position = Vector2( 768, 169 )
-collision_layer = 8
-script = ExtResource( 8 )
+[node name="MovingPlatform" parent="." instance=ExtResource( 14 )]
+position = Vector2( 787, 146 )
 
-[node name="collision" type="CollisionShape2D" parent="fall-zone"]
-position = Vector2( 124, 78 )
-shape = SubResource( 46 )
+[node name="MovingPlatform2" parent="." instance=ExtResource( 14 )]
+position = Vector2( 632, 84 )
+horizontal = false
 
-[node name="fall-zone2" type="Area2D" parent="."]
-position = Vector2( 994, 184 )
-collision_layer = 8
-script = ExtResource( 8 )
+[node name="MovingPlatform3" parent="." instance=ExtResource( 14 )]
+position = Vector2( 1828, -221 )
+horizontal = false
 
-[node name="collision" type="CollisionShape2D" parent="fall-zone2"]
-position = Vector2( 556, 65 )
-shape = SubResource( 46 )
+[node name="MovingPlatform4" parent="." instance=ExtResource( 14 )]
+position = Vector2( 1479, -130 )
+horizontal = false
 
 [node name="FallingPlatforms" type="Node2D" parent="."]
 position = Vector2( 351, 80 )
@@ -1321,20 +1260,102 @@ position = Vector2( 931, -248 )
 [node name="FallingPlatform11" parent="FallingPlatforms" instance=ExtResource( 13 )]
 position = Vector2( 1125, -277 )
 
-[node name="MovingPlatform" parent="." instance=ExtResource( 14 )]
-position = Vector2( 787, 146 )
+[node name="Checkpoints" type="Node2D" parent="."]
+process_priority = -1
 
-[node name="MovingPlatform2" parent="." instance=ExtResource( 14 )]
-position = Vector2( 632, 84 )
-horizontal = false
+[node name="checkpoint" parent="Checkpoints" instance=ExtResource( 17 )]
+position = Vector2( 1045, 159 )
 
-[node name="MovingPlatform3" parent="." instance=ExtResource( 14 )]
-position = Vector2( 1828, -221 )
-horizontal = false
+[node name="checkpoint2" parent="Checkpoints" instance=ExtResource( 17 )]
+position = Vector2( 1376, -175 )
 
-[node name="MovingPlatform4" parent="." instance=ExtResource( 14 )]
-position = Vector2( 1479, -122 )
-horizontal = false
+[node name="goal" parent="." instance=ExtResource( 18 )]
+position = Vector2( 1639, -350 )
+
+[node name="Player" parent="." instance=ExtResource( 1 )]
+position = Vector2( 24, 112 )
+
+[node name="Mushroom" parent="." instance=ExtResource( 12 )]
+position = Vector2( 285, 64 )
+
+[node name="Mushroom3" parent="." instance=ExtResource( 12 )]
+position = Vector2( 1099, 159 )
+
+[node name="Mushroom2" parent="." instance=ExtResource( 12 )]
+position = Vector2( 1685, -241 )
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="sky" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2( 576, 0 )
+
+[node name="Sprite" type="Sprite" parent="ParallaxBackground/sky"]
+position = Vector2( 0, -170 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 4 )
+centered = false
+
+[node name="clouds" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2( 576, 0 )
+
+[node name="Sprite" type="Sprite" parent="ParallaxBackground/clouds"]
+material = SubResource( 45 )
+position = Vector2( 0, -170 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 6 )
+centered = false
+
+[node name="cloud-mountain" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2( 0.6, 0.8 )
+motion_mirroring = Vector2( 576, 0 )
+
+[node name="Sprite" type="Sprite" parent="ParallaxBackground/cloud-mountain"]
+position = Vector2( 0, -170 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 5 )
+centered = false
+
+[node name="mountain-trees" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2( 0.7, 1 )
+motion_mirroring = Vector2( 576, 0 )
+
+[node name="Sprite" type="Sprite" parent="ParallaxBackground/mountain-trees"]
+position = Vector2( 0, -170 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 7 )
+centered = false
+
+[node name="fg-trees" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2( 0.8, 1 )
+motion_mirroring = Vector2( 576, 0 )
+
+[node name="Sprite" type="Sprite" parent="ParallaxBackground/fg-trees"]
+position = Vector2( 0, -170 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 2 )
+centered = false
+
+[node name="fall-zone" type="Area2D" parent="."]
+position = Vector2( 768, 169 )
+collision_layer = 8
+script = ExtResource( 8 )
+
+[node name="collision" type="CollisionShape2D" parent="fall-zone"]
+position = Vector2( 124, 78 )
+shape = SubResource( 46 )
+
+[node name="fall-zone2" type="Area2D" parent="."]
+position = Vector2( 994, 184 )
+collision_layer = 8
+script = ExtResource( 8 )
+
+[node name="collision" type="CollisionShape2D" parent="fall-zone2"]
+position = Vector2( 556, 65 )
+shape = SubResource( 46 )
+
+[node name="HUD" parent="." instance=ExtResource( 16 )]
 
 [connection signal="body_entered" from="fall-zone" to="fall-zone" method="_on_fallzone_body_entered"]
 [connection signal="body_entered" from="fall-zone2" to="fall-zone2" method="_on_fallzone_body_entered"]
+
+[editable path="HUD"]
